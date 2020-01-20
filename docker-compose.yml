@@ -20,16 +20,15 @@ services:
     depends_on:
       - mysql
 
-  chatapp:
-    build: DockerImages/ChatApp
-    volumes:
-      - ./:/app
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
-      - app
+#  chatapp:
+#    build: DockerImages/ChatApp
+#    volumes:
+#      - ./:/app
+#      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+#    ports:
+#      - "3000:8000"
+#    depends_on:
+#      - mysql
 
 
   mysql:

@@ -1,57 +1,23 @@
-@extends("layouts.app")
-<style>
-    * {
-        font-family: tahoma;
-        font-size: 12px;
-        padding: 0px;
-        margin: 0px;
-    }
+@extends('layouts.app')
 
-    .msg {
-        line-height: 18px;
-    }
+@section('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Chats</div>
 
-    .chat_div {
-        width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #chat {
-        padding: 5px;
-        background: #ddd;
-        border-radius: 5px;
-        overflow-y: scroll;
-        border: 1px solid #CCC;
-        margin-top: 10px;
-        height: 160px;
-    }
-
-    #chat_input {
-        border-radius: 2px;
-        border: 1px solid #ccc;
-        margin-top: 10px;
-        padding: 5px;
-        width: 400px;
-    }
-
-    #status {
-        width: 88px;
-        display: block;
-        float: left;
-        margin-top: 15px;
-    }
-</style>
-@section("content")
-
-    <div id="chat" class="chat_div"></div>
-    <div class="chat_div">
-        <span id="status">Connecting...</span>
-        <input type="text" id="chat_input" disabled="disabled"/>
-    </div>
-@endsection
-
-
-@section("scripts")
-    <script src="{{asset("js/chat_scripts/chat.js")}}"></script>
+                        <div class="panel-body">
+                            <chat-messages :messages="messages"></chat-messages>
+                        </div>
+                        <div class="panel-footer">
+                            <chat-form
+                                    v-on:messagesent="addMessage"
+                                    :user="{{ Auth::user() }}"
+                            ></chat-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection
